@@ -21,7 +21,8 @@ class FlynAddNoreferrerAttribs
 
     public static function styleLoaderTag(string $html, string $handle, string $src): string
     {
-        $html = str_replace('<link', "<link rel='noreferrer'", $html);
+        $html = preg_replace("/rel='([^']+)'/", "rel='$1 noreferrer'", $html);
+        // $html = str_replace('<link', "<link rel='noreferrer'", $html);
 
         return $html;
     }
